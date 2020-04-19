@@ -1,3 +1,3 @@
 # college-basketball-data
 
-![Data flow chart][readme_flowchart.png]
+![alt text](readme_flowchart.png "Data Flowchart")
