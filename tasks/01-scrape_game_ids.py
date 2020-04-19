@@ -68,6 +68,9 @@ if __name__ == "__main__":
         __file__), "../raw_data/", file_name)
 
     with open(file_path, "w") as f:
-        f.write("game_id\n")  # header
+        # header row
+        f.write("season|game_id\n")
+
+        # body
         for game_id in game_ids:
-            f.write(f"{game_id}\n")
+            f.write(f"{season}|{game_id}\n")
