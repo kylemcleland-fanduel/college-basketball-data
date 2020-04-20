@@ -7,11 +7,11 @@ from bs4 import BeautifulSoup
 
 
 def get_season_context(year):
-    '''
+    """
     Return season_id, start_date, and end_date for a given year.
     List of seasons is manually hard-coded due to small scope. 
     To add a season, simply add it to the dictionary.
-    '''
+    """
     seasons = {
         2019: {
             "season_id": 14300,
