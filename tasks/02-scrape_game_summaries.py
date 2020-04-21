@@ -82,9 +82,9 @@ if __name__ == "__main__":
     print(f"Loading list of game_ids from: {game_ids_file}")
     game_ids = []
     with open(game_ids_file, "r") as f:
-        reader = csv.reader(f, delimiter="|")
+        reader = csv.DictReader(f, delimiter="|")
         for row in reader:
-            game_ids.append(row[1])
+            game_ids.append(row["game_id"])
 
     # Create list of game details
     print("Parsing game box scores")
