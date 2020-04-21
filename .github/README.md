@@ -8,7 +8,7 @@
 * Develop process to scrape:
   * ~~game_ids~~
   * ~~game_summaries~~
-  * team_ids
+  * ~~team_ids~~
 * Develop process to load raw data to a database.
 * Develop SQL transforms for:
   * dim_team
@@ -33,6 +33,13 @@ Parameters:
 * **`game_id`**: The unique game id used by the NCAA.
 
 Takes a list of game_ids, loops through them to scrape each box score for summary details. Creates a text file with a list of all game_ids at [`/raw_data/{season}_game-summaries_{run_date}.txt`](/raw_data)
+
+### `03-scrape_teams.py`
+Parameters:
+* **`season`**: The college basketball season (year). For a season e.g. 2019-2020, you would enter the year when the season ended (2020).
+* **`team_id`**: The unique team id used by the NCAA.
+
+Takes a list of team_ids, loops through them to scrape each team page for team details. Creates a text file with a list of all team_ids at [`/raw_data/{season}_teams_{run_date}.txt`](/raw_data)
 
 ## Data Dictionary
 
@@ -61,3 +68,11 @@ Fields:
 * **`home_scores`** ***(list)**: List of scores by half for the home team. (Same structure as visit_scores above)
 * **`attendance`** **(integer)***: Number of fans in attendance. *-1 if error in parsing.*
 * **`officials`** **(list)**: Name of referees. *Blank list ([]) if error in parsing.*
+
+#### teams:
+List of all teams.
+
+Fields:
+* **`team_id`** **(integer)**: The unique game id used by the NCAA.
+* **`team_short_name`** **(string)**: The team name as displayed on the NCAA team page.
+* **`team_long_name`** **(string)**: The team name + mascot as displayed on the NCAA team page. 
