@@ -8,7 +8,7 @@
 * Develop process to scrape:
   * ~~game_ids~~
   * ~~game_summaries~~
-  * ~~team_ids~~
+  * team_ids
 * Develop process to load raw data to a database.
 * Develop SQL transforms for:
   * dim_team
