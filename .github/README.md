@@ -3,6 +3,22 @@
 ## Flowchart 
 ![alt text](readme_flowchart.png "Data Flowchart")
 
+## Roadmap
+
+* Develop process to scrape:
+  * ~~game_ids~~
+  * ~~game_summaries~~
+  * ~~team_ids~~
+* Develop process to load raw data to a database.
+* Develop SQL transforms for:
+  * dim_team
+  * dim_game
+  * fact_game_summary
+* Develop process to load modelled data to .csv. 
+* Develop process to scrape:
+  * game_box_scores
+* Develop modeled box score data
+
 ## Tasks
 
 ### `01-scrape_game_ids.py`
