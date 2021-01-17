@@ -17,8 +17,11 @@ def game_summary_scraper(game_id):
 
     box_score_url = f"http://stats.ncaa.org/contests/{game_id}/box_score"
     headers = {'user-agent': 'my-app/0.0.1'}
-    response = requests.get(box_score_url, headers=headers)
-    soup = BeautifulSoup(response.text, features="html.parser")
+    try:
+        response = requests.get(box_score_url, headers=headers)
+        soup = BeautifulSoup(response.text, features="html.parser")
+    except requests.exceptions.ConnectionError:
+        return game_id
 
     game_details = soup.find_all("table")
     """
