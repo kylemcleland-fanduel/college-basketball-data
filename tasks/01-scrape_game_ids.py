@@ -23,6 +23,11 @@ def get_season_context(year):
             "start_date": date(2019, 11, 5),
             "end_date": date(2020, 3, 11),
         },
+        2021: {
+            "season_id": 17420,
+            "start_date": date(2020, 11, 25),
+            "end_date": date(2021, 3, 7)
+        }
     }
 
     if year in seasons:
@@ -44,8 +49,10 @@ def game_id_scraper(season):
     game_ids = []
 
     while loop_date <= loop_end_date:
+        print(f"Scraping scores for {loop_date}")
         scoreboard_url = f"http://stats.ncaa.org/season_divisions/{season_context['season_id']}/scoreboards?game_date={loop_date.strftime('%m/%d/%y')}"
-        response = requests.get(scoreboard_url)
+        headers = {'user-agent': 'my-app/0.0.1'}
+        response = requests.get(scoreboard_url, headers=headers)
 
         soup = BeautifulSoup(response.text, features="html.parser")
         _game_ids = re.findall("contests/([0-9]*)/box_score", str(soup))
@@ -59,7 +66,7 @@ def game_id_scraper(season):
 if __name__ == "__main__":
 
     # Scrape game_ids from a season and write to .csv
-    season = 2020
+    season = 2021
     game_ids = game_id_scraper(season=season)
 
     date_stamp = date.today().strftime('%Y-%m-%d')

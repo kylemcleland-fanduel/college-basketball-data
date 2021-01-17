@@ -16,7 +16,8 @@ def game_summary_scraper(game_id):
     """
 
     box_score_url = f"http://stats.ncaa.org/contests/{game_id}/box_score"
-    response = requests.get(box_score_url)
+    headers = {'user-agent': 'my-app/0.0.1'}
+    response = requests.get(box_score_url, headers=headers)
     soup = BeautifulSoup(response.text, features="html.parser")
 
     game_details = soup.find_all("table")
@@ -70,7 +71,7 @@ def game_summary_scraper(game_id):
 
 
 if __name__ == "__main__":
-    season = 2020
+    season = 2021
 
     # Load most recent export of {season}_game-ids for parsing
     file_folder = os.path.join(os.path.dirname(
